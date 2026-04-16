@@ -1,0 +1,25 @@
+export class PromptDetailComponent{
+
+prompt:any
+
+constructor(private service:PromptService,private route:ActivatedRoute){}
+
+ngOnInit(){
+
+let id=this.route.snapshot.params['id']
+
+this.service.getPrompt(id).subscribe(data=>{
+this.prompt=data
+})
+
+}
+
+}
+
+<h2>{{prompt.title}}</h2>
+
+<p>{{prompt.content}}</p>
+
+<p>Complexity: {{prompt.complexity}}</p>
+
+<p>Views: {{prompt.view_count}}</p>
